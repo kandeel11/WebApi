@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using WebApi.Models;
 using WebApi.Repositry;
+using WebApi.Filters;
+
 
 namespace WebApi.Controllers
 {
@@ -15,8 +18,14 @@ namespace WebApi.Controllers
         {
             _repositry = repositry;
         }
+        [HttpGet("test-error")]
+        public IActionResult TestError()
+        {
+            throw new Exception("This is a test exception.");
+        }
+        [ResultFilterTest]
+        [TimeLogFilter]
         [HttpGet]
-
         public IActionResult GetAll()
         {
             return Ok(_repositry.GetAll());
