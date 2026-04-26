@@ -1,10 +1,13 @@
 @WebApi_HostAddress = http://localhost:5159
-
-GET {{WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWhtZWQiLCJqdGkiOiIyYzJiMjIxMi01N2NiLTQwMjgtYmY2My1lMjE5YjIxNzVhODUiLCJleHAiOjE3NzcyMTc2NjUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTE1OSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTE1OSJ9.U1wHDbY-pmwQBAepgp4vQwBcdov09vA0UsWciFeOweU
 
 ###
 GET {{WebApi_HostAddress}}/Api/Student
+Authorization: Bearer {{token}}
+###
+GET {{WebApi_HostAddress}}/Api/Student
+Authorization: Bearer {{token}}
+
 ###
 POST {{WebApi_HostAddress}}/Api/Student
 Content-Type: application/json
@@ -14,7 +17,7 @@ Content-Type: application/json
     "address": "ALex",
     "age": 22,
     "DOB":"2004-06-15",
-    "imageUrl": "He.png"
+    "imageUrl": "He.peg"
   
 }
 ###
@@ -43,4 +46,38 @@ GET {{WebApi_HostAddress}}/error
 ###
 GET {{WebApi_HostAddress}}/Api/Department
 
+###
+GET {{WebApi_HostAddress}}/Api/Department/1
 
+###
+POST {{WebApi_HostAddress}}/Api/Department
+Content-Type: application/json
+
+{
+  "name": "IS",
+  "Location": "ALex"
+}
+
+###
+DELETE {{WebApi_HostAddress}}/Api/Department/4
+
+###
+POST {{WebApi_HostAddress}}/Api/Account/Register
+Content-Type: application/json
+
+{
+  "name": "Ahmed",
+  "email": "ahmed@example.com",
+  "address": "Cairo, Egypt",
+  "password": "1234",
+  "confirmPassword": "1234"
+}
+
+### 
+POST {{WebApi_HostAddress}}/api/account/login
+Content-Type: application/json
+
+{
+  "name": "Ahmed",
+  "password": "1234"
+}

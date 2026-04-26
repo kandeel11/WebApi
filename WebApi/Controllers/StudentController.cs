@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using WebApi.Models;
 using WebApi.Repositry;
 using WebApi.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IRepositry<Student> _repositry;
